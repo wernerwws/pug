@@ -774,7 +774,8 @@ Compiler.prototype = {
     // Buffer code
     if (code.buffer) {
       var val = code.val.trim();
-      val = 'null == (pug_interp = ' + val + ') ? "" : pug_interp';
+      val = 'null == (pug_interp = ' + val + ') ? "UNRESOLVED VARIABLE ' + val + '" : pug_interp';
+      // val = 'null == (pug_interp = ' + val + ') ? "" : pug_interp';
       if (code.mustEscape !== false)
         val = this.runtime('escape') + '(' + val + ')';
       this.bufferExpression(val);
